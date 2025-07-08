@@ -12,14 +12,9 @@
 class Solution {
 public:
     int iterate(TreeNode* node,int& maxPathSum){
-        if(node->left==nullptr && node->right==nullptr){
-            maxPathSum=max(maxPathSum,node->val);
-            return node->val;
-        }
-        int ls=0;
-        int rs=0;
-        if(node->left!=nullptr) ls = max(0,iterate(node->left,maxPathSum)); 
-        if(node->right!=nullptr) rs = max(0,iterate(node->right,maxPathSum));
+        if(node==nullptr) return 0;
+        int ls = max(0,iterate(node->left,maxPathSum)); 
+        int rs = max(0,iterate(node->right,maxPathSum));
         maxPathSum=max(maxPathSum,ls+rs+node->val);
         maxPathSum=max(maxPathSum,node->val+max(ls,rs));
         return node->val+max(ls,rs); 
