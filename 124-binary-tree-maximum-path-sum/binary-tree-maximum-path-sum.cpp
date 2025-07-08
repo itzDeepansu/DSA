@@ -18,10 +18,8 @@ public:
         }
         int ls=0;
         int rs=0;
-        if(node->left!=nullptr) ls = iterate(node->left,maxPathSum); 
-        if(node->right!=nullptr) rs = iterate(node->right,maxPathSum);
-        ls=max(0,ls);
-        rs=max(0,rs);
+        if(node->left!=nullptr) ls = max(0,iterate(node->left,maxPathSum)); 
+        if(node->right!=nullptr) rs = max(0,iterate(node->right,maxPathSum));
         maxPathSum=max(maxPathSum,ls+rs+node->val);
         maxPathSum=max(maxPathSum,node->val+max(ls,rs));
         return node->val+max(ls,rs); 
