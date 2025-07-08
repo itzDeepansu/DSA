@@ -15,8 +15,8 @@ public:
         if(node==nullptr) return 0;
         int ls = max(0,iterate(node->left,maxPathSum)); 
         int rs = max(0,iterate(node->right,maxPathSum));
-        maxPathSum=max(maxPathSum,ls+rs+node->val);
-        maxPathSum=max(maxPathSum,node->val+max(ls,rs));
+        maxPathSum=max(maxPathSum,ls+rs+node->val); //checks downward bend
+        maxPathSum=max(maxPathSum,node->val+max(ls,rs)); //checks upward bend
         return node->val+max(ls,rs); 
     }
     int maxPathSum(TreeNode* root) {
