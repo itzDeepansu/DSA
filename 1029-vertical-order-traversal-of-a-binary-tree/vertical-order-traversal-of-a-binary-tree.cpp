@@ -21,7 +21,7 @@ public:
              });
     }
     void iterate(TreeNode* node, int x, int y,
-                 unordered_map<int, vector<vector<int>>>& yxElMap) {
+                 map<int, vector<vector<int>>>& yxElMap) {
         if (node == nullptr)
             return;
         yxElMap[x].push_back({y, node->val});
@@ -30,10 +30,9 @@ public:
     }
     vector<vector<int>> verticalTraversal(TreeNode* root) {
         vector<vector<int>> answer;
-        unordered_map<int, vector<vector<int>>> yxElMap;
+        map<int, vector<vector<int>>> yxElMap;
         iterate(root, 0, 0, yxElMap);
-        map<int, vector<vector<int>>> ordered(yxElMap.begin(), yxElMap.end());
-        for (auto el : ordered) {
+        for (auto el : yxElMap) {
             sortVectorOfVectors(el.second);
             vector<int> temp;
             for (auto vvce : el.second) {
