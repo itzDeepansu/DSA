@@ -34,15 +34,12 @@ public:
         iterate(root, 0, 0, yxElMap);
         map<int, vector<vector<int>>> ordered(yxElMap.begin(), yxElMap.end());
         for (auto el : ordered) {
-            // cout << el.first << endl;
             sortVectorOfVectors(el.second);
             vector<int> temp;
             for (auto vvce : el.second) {
-                // cout << vvce[0] << " " << vvce[1] << endl;
                 temp.push_back(vvce[1]);
             }
             answer.push_back(temp);
-            // cout << endl;
         }
         return answer;
     }
