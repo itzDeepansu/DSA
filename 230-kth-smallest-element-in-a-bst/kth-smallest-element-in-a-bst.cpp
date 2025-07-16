@@ -11,20 +11,15 @@
  */
 class Solution {
 public:
-    void fillPQ(TreeNode* node ,priority_queue<int, vector<int>, greater<int>>& minPQ){
-        if(node==nullptr) return;
-        minPQ.push(node->val);
-        fillPQ(node->left,minPQ);
-        fillPQ(node->right,minPQ);
+    void inOrder(TreeNode* node,vector<int>& vc){
+        if(!node) return;
+        inOrder(node->left,vc);
+        vc.push_back(node->val);
+        inOrder(node->right,vc);
     }
     int kthSmallest(TreeNode* root, int k) {
-        priority_queue<int, vector<int>, greater<int>> minPQ;
-        fillPQ(root,minPQ);
-        k--;
-        while(k){
-            minPQ.pop();
-            k--;
-        }
-        return minPQ.top();
+        vector<int> vc;
+        inOrder(root,vc);
+        return vc[k-1];
     }
 };
