@@ -9,6 +9,8 @@ public:
             }
         }
         return false;
+
+        
     }
     bool checkCycle(const vector<vector<char>>& grid, char ch,
                     vector<vector<bool>>& visited, pair<int, int> currIdx) {
@@ -21,7 +23,6 @@ public:
             int sz = q.size();
             for (int itr = 0; itr < sz; itr++) {
                 auto [i, j] = q.front();
-                cout << i << "-" << j << " ";
                 visited[i][j] = true;
                 if (i > 0 && grid[i - 1][j] == ch && !visited[i - 1][j]) {
                     q.push({i - 1, j});
@@ -56,7 +57,6 @@ public:
             for (int j = 0; j < grid[i].size(); j++) {
                 if (!visited[i][j] &&
                     checkCycle(grid, grid[i][j], visited, {i, j})) {
-                    cout << endl;
                     return true;
                 }
             }
