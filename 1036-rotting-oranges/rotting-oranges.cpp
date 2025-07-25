@@ -12,6 +12,8 @@ public:
                 else if(grid[i][j]==2) q.push({i,j});
             }
         }}
+
+        
         if(fresh==0) return 0;
         while(!q.empty() && fresh!=0){
             int sz=q.size();
