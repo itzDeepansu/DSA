@@ -5,6 +5,8 @@ public:
         unordered_map<string,bool> dict;
         dict[beginWord]=true;
 
+
+
         for(auto str : wordList) dict[str]=false;
         queue<string> q;
         q.push(beginWord);
